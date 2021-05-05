@@ -15,15 +15,12 @@ export function TaskList() {
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
   function handleCreateNewTask() {
-     // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
     if(!newTaskTitle) return;
-    
     const newTask ={
       id: Math.random(),
       title: newTaskTitle,
       isComplete:false
     }
-
     setTasks(oldState => [...oldState, newTask]);
     setNewTaskTitle('');
   }
@@ -34,7 +31,6 @@ export function TaskList() {
       ...task,
       isComplete: !task.isComplete
     }: task);
-    
     setTasks(completedTask);
   }
 
@@ -52,7 +48,7 @@ export function TaskList() {
         <div className="input-group">
           <input 
             type="text" 
-            placeholder="Adicionar novo to.do" 
+            placeholder="Adicionar novo todo" 
             onChange={(e) => setNewTaskTitle(e.target.value)}
             value={newTaskTitle}
           />
